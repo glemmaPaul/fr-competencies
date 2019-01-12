@@ -1,0 +1,137 @@
+<html>
+  <head>
+    <meta charset="utf8">
+    <title>SuitArt Business Card</title>
+    <style>
+      
+      @font-face {
+          font-family: 'kg_june_bugregular';
+          src: url('./fonts/kgjunebug-webfont.woff2') format('woff2'),
+              url('./fonts/kgjunebug-webfont.woff') format('woff');
+          font-weight: normal;
+          font-style: normal;
+
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background: {{ background }};
+        font-family: 'kg_june_bugregular';
+      }
+
+      .page {
+        position: relative;
+        height: 90mm;
+        width: 50mm;
+        display: block;
+        page-break-after: auto;
+        overflow: hidden;
+      }
+
+      @media print {
+
+        .page {
+          margin: 0;
+          height: 100%;
+          width: 100%;
+        }
+      }
+
+
+      .container {
+        position: absolute;
+        background: #FFF;
+        margin: 3% 5% 1% 5%;
+        height: 100%;
+        width: 90%;
+        padding: 2%;
+        box-sizing: border-box;
+      }
+
+      .achievement {
+          width: 32%;
+          padding-right: 1%;
+          padding-bottom: 1%;
+          text-align: center;
+          height: 19%;
+          float: left;
+          border: none;
+      }
+
+      .achievement img {
+        border: none;
+      }
+
+
+      .center {
+        text-align: center;
+      }
+
+      .logo {
+        position: relative;
+        width: 80%;
+        left: 10%;
+        top: 15%;
+      }
+
+      .page-header {
+          font-size: 20px;
+          color: #FFF;
+          padding: 15px 0px 0px 10px;
+      }
+
+      .page-header .title {
+        width: 50%;
+        float: left;
+        font-family: 'kg_june_bugregular';
+        font-weight: normal;
+      }
+
+      .page-header .year {
+        float: right;
+        width: 60px;
+        height: 30px;
+        text-align: center;
+        color: #FFF;
+        font-family: 'kg_june_bugregular';
+      }
+
+      .page-footer {
+          text-align: right;
+          padding-right: 20px;
+          color: #FFF;
+          margin-bottom: 10px;
+          border: 0px;
+          padding-top: 5px;
+      }
+
+      footer {
+        border: none;
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <div class="page-header" id="pageHeader-1">
+      <div class="title">{{ category }}</div>
+      <div class="year">{{ year }}</div>
+    </div>
+    <div class="page">
+      <div class="container">
+        {{#images}}
+        <div class="achievement">
+            <img src="{{.}}" height="100%" />
+        </div>
+        {{/images}}
+      </div>
+    </div>
+    <div class="page-footer" id="pageFooter-1">
+        {{ studentName }}
+    </div>
+    
+  </body>
+</html>
