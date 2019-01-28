@@ -8,7 +8,7 @@ import generatePDF from './index'
 
 const debug = debugFactory('elodie')
 
-const dateFormat = 'MM/YY'
+const dateFormat = 'MM/YYYY'
 
 const output = []
 
@@ -64,8 +64,8 @@ async function parseRecords(records, start, end, viewOptions) {
 program
 .version('0.1.0')
 .arguments('<path> <start> <end>')
-.option('-y --year', 'What year', 'SP')
-.option('-B --background', 'What background', 'blue')
+.option('-y --year', 'What year', 'PS')
+.option('-B --background', 'What background', '#ff3399')
 .action(function (path, start, end, options) {
     return loadCSV(path).then((records) => {
         const startDate = moment(start, dateFormat)

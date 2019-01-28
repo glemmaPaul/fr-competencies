@@ -26,6 +26,6 @@ export default async function generatePDF(path, { studentName, year, category, i
   
   pdf.create(html, options).toFile(path, function(err, res) {
     if (err) return console.log(err);
-    console.log(res); // { filename: '/app/businesscard.pdf' }
+    console.log(res);
   });
 }
