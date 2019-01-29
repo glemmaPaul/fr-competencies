@@ -49,7 +49,7 @@ async function parseRecords(records, start, end, viewOptions) {
         // Validate of all images are existent
         images.forEach((image) => {
             if (fs.existsSync(image) === false) {
-                console.error(`Cannot retrieve "${image}", does not exist`)
+                console.error(`Error in generating for "${student}", cannot retrieve "${image}", does not exist`)
             }
         })
 
