@@ -8,7 +8,7 @@ import generatePDF from './index'
 
 const debug = debugFactory('elodie')
 
-const dateFormat = 'MM/YY'
+const dateFormat = 'MM/YYYY'
 
 const output = []
 
@@ -46,9 +46,28 @@ async function parseRecords(records, start, end, viewOptions) {
 
         const images = studentCompetencies.map(item => `./images/${item[1]}`)
 
-        const pages = Math.floor(images / 15)
+        // Validate of all images are existent
+        images.forEach((image) => {
+            if (fs.existsSync(image) === false) {
+                console.error(`Error in generating for "${student}", cannot retrieve "${image}", does not exist`)
+            }
+        })
 
-        generatePDF(`./output/${student}.pdf`, {
+        const duplicates = students.slice(0, index).reduce((number, otherStudent) => {
+            if (student === otherStudent) {
+                return number + 1
+            }
+
+            return number
+        }, 0)
+
+        let filename = `${student}`
+
+        if (duplicates > 0) {
+            filename = `${filename}-(${duplicates})`
+        }
+
+        generatePDF(`./output/${filename}.pdf`, {
             studentName: student,
             year: 'SP',
             category: category,
@@ -64,8 +83,8 @@ async function parseRecords(records, start, end, viewOptions) {
 program
 .version('0.1.0')
 .arguments('<path> <start> <end>')
-.option('-y --year', 'What year', 'SP')
-.option('-B --background', 'What background', 'blue')
+.option('-y --year', 'What year', 'PS')
+.option('-B --background <background>', 'What background', '#ff3399')
 .action(function (path, start, end, options) {
     return loadCSV(path).then((records) => {
         const startDate = moment(start, dateFormat)
