@@ -13,7 +13,7 @@ const dateFormat = 'MM/YYYY'
 const output = []
 
 async function loadCSV(path) {
-    const input = fs.readFileSync(path).toString('ascii')
+    const input = fs.readFileSync(path).toString('utf8')
 
     return new Promise((resolve, reject) => {
         parse(input, { delimiter: ','}, (err, records) => {
