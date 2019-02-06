@@ -83,3 +83,5 @@ typings/
 
 
 output/
+
+.DS_Store
