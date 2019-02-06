@@ -29,3 +29,10 @@ export default async function generatePDF(path, { studentName, year, category, i
     console.log(res);
   });
 }
+
+// pink : FF78BB
+// red : red
+// blue : 40CAF3
+// green : 96C065
+// purple : 64447C
+// yellow : FFDE19
