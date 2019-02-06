@@ -76,12 +76,18 @@
       width: 50%;
       text-align: left;
     }
+
+    .page-header .title .underline {
+      text-decoration: underline;
+    }
     
     .page-header .year {
       float: right;
       width: 60px;
       height: 30px;
       text-align: right;
+      background: url("images/pdf/year-circle.png");
+      background-size: cover;
     }
     
     .page-footer {
@@ -101,7 +107,7 @@
 </head>
 <body>
   <div class="page-header" id="pageHeader-1">
-    <div class="title">{{ category }}</div>
+    <div class="title"><span class="underline">{{ category }}</span>, {{ reportDate }}</div>
     <div class="year">{{ year }}</div>
   </div>
   <div class="page">

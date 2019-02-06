@@ -6,6 +6,8 @@ import moment from 'moment'
 
 import generatePDF from './index'
 
+moment.locale('fr')
+
 const debug = debugFactory('elodie')
 
 const dateFormat = 'MM/YYYY'
@@ -71,6 +73,7 @@ async function parseRecords(records, start, end, viewOptions) {
             studentName: student,
             year: 'SP',
             category: category,
+            reportDate: moment(end).format('MMMM YYYY'),
             images,
             ...viewOptions
         })

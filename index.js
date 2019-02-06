@@ -17,12 +17,8 @@ var options = {
 };
 
 
-export default async function generatePDF(path, { studentName, year, category, images, background }) {
-  const view = {
-    studentName, year, category, images, background
-  }
-  
-  const html = Mustache.render(template, view)
+export default async function generatePDF(path, templateOptions) {
+  const html = Mustache.render(template, templateOptions)
   
   pdf.create(html, options).toFile(path, function(err, res) {
     if (err) return console.log(err);
