@@ -10,7 +10,7 @@ debug('Executing script')
 
 var template = fs.readFileSync('./html/achievements.html', 'utf8');
 var options = { 
-  format: 'Letter', 
+  format: 'A4', 
   base: `file://${__dirname}/`, 
   footer: { height: "30px" }, 
   header: { height: "40px" } 

@@ -42,11 +42,11 @@
     
     .achievement {
       width: 31%;
-      padding-right: 1%;
-      padding-bottom: 1%;
+      padding: 1%;
       text-align: center;
-      height: 19%;
+      height: 18%;
       float: left;
+      background-position: center;
       border: none;
     }
     
@@ -83,11 +83,13 @@
     
     .page-header .year {
       float: right;
-      width: 60px;
-      height: 30px;
+      width: 50px;
+      height: 50px;
       text-align: right;
-      background: url("images/pdf/year-circle.png");
-      background-size: cover;
+      background-image: url("year-circle.png");
+      background-position: center;
+      background-size: 50px 50px;
+      overflow: visible;
     }
     
     .page-footer {
@@ -114,7 +116,7 @@
     <div class="container">
       {{#images}}
       <div class="achievement">
-        <img src="{{.}}" height="100%" />
+        <img src="{{.}}" height="100%"/>
       </div>
       {{/images}}
     </div>
