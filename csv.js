@@ -6,6 +6,8 @@ import moment from 'moment'
 
 import generatePDF from './index'
 
+moment.locale('fr')
+
 const debug = debugFactory('elodie')
 
 const dateFormat = 'MM/YYYY'
@@ -13,7 +15,7 @@ const dateFormat = 'MM/YYYY'
 const output = []
 
 async function loadCSV(path) {
-    const input = fs.readFileSync(path).toString('ascii')
+    const input = fs.readFileSync(path).toString('utf8')
 
     return new Promise((resolve, reject) => {
         parse(input, { delimiter: ','}, (err, records) => {
@@ -71,6 +73,7 @@ async function parseRecords(records, start, end, viewOptions) {
             studentName: student,
             year: 'SP',
             category: category,
+            reportDate: moment(end).format('MMMM YYYY'),
             images,
             ...viewOptions
         })
